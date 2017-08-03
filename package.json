@@ -1,0 +1,19 @@
+{
+    "name": "infusion-icons",
+    "description": "SVG icons for use in Infusion",
+    "version": "1.0.0",
+    "author": "Fluid Project",
+    "bugs": "http://issues.fluidproject.org/browse/FLUID",
+    "homepage": "http://www.fluidproject.org/",
+    "license": "(BSD-3-Clause)",
+    "keywords": [
+        "infusion",
+        "icon",
+        "svg",
+        "font"
+    ],
+    "repository": "git://github.com/grrrero/infusion-icons.git",
+    "engines": {
+        "node": ">=6.0.0"
+    }
+}
