@@ -12,7 +12,7 @@
         "svg",
         "font"
     ],
-    "repository": "git://github.com/grrrero/infusion-icons.git",
+    "repository": "git://github.com/fluid-project/infusion-icons.git",
     "engines": {
         "node": ">=6.0.0"
     }
