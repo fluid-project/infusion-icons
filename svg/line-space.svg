@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;}
-</style>
-<g id="side_scroll_8_">
-	<polygon points="0,20 8,12 16,20 12,20 12,44 16,44 8,52 0,44 4,44 4,20 	"/>
-	<rect x="20" y="12" width="44" height="8"/>
-	<rect x="20" y="28" width="44" height="8"/>
-	<rect x="20" y="44" width="44" height="8"/>
-</g>
-</svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>line-space</title><path d="M507.08,96.58H193.65a5,5,0,0,0-5,5v55a5,5,0,0,0,5,5H507.08a5,5,0,0,0,5-5v-55A5,5,0,0,0,507.08,96.58Z"/><path d="M507.08,223.53H193.65a5,5,0,0,0-5,5v54.94a5,5,0,0,0,5,5H507.08a5,5,0,0,0,5-5V228.53A5,5,0,0,0,507.08,223.53Z"/><path d="M507.08,350.49H193.65a5,5,0,0,0-5,5v54.95a5,5,0,0,0,5,5H507.08a5,5,0,0,0,5-5V355.48A5,5,0,0,0,507.08,350.49Z"/><path d="M134.16,330a3.57,3.57,0,0,0-5.07.21L87.86,375.58V136l41.23,45.46a3.56,3.56,0,0,0,5.07.21l14.08-13.11a3.56,3.56,0,0,0,.2-5L77.53,85.81a3.56,3.56,0,0,0-5.26,0L.93,163.93a3.57,3.57,0,0,0,.2,5l14.09,13.11a3.56,3.56,0,0,0,5.06-.21l41.23-45.42V376L20.28,330.57a3.55,3.55,0,0,0-5.06-.21L1.13,343.47a3.57,3.57,0,0,0-.2,5l70.91,77.71a3.56,3.56,0,0,0,5.26,0l71.34-78.12a3.56,3.56,0,0,0-.2-5Z"/></svg>
