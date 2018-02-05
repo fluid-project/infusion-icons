@@ -1,0 +1,11 @@
+{
+    "src": [
+        "svg/iconName.svg"
+    ],
+    "options": {
+        "font": "My-Icons",
+        "codepoints": {
+            "iconName": "0xE00e"
+        }
+    }
+}
