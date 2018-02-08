@@ -69,7 +69,8 @@ vagrant ci test --stage build
 Once you have provisioned the VM by running `vagrant up` and then `vagrant ci test`, you can also use the VM to build a
 custom font (see below).  Before you can run those commands, you need to run `vagrant ssh` to login to the VM.  Once you
 have done this, navigate to the `/vagrant` subdirectory.  You should then be able to continue as outlined in the next
-section.
+section.  Please note, to use a custom configuration file (see below), you will either need to create it in the
+repository directory, or copy it to the VM using a program like `scp` or `sftp`.
 
 #### Custom Icon Fonts ####
 
