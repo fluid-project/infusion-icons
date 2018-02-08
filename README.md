@@ -9,6 +9,8 @@ The documentation containing best practices for creating the SVG icons as well a
 
 ### Compiling Icon Fonts ###
 
+#### On a Local Machine ####
+
 Infusion-Icons comes with a grunt task for compiling all of the SVGs into an icon font.
 
 The following dependencies are required to be installed first.
@@ -33,6 +35,41 @@ grunt
 This will create the icon fonts in the `build` directory. Additionally CSS and HTML files will be generated alongside the fonts. The CSS file can be used for adding the icons to your web page; however, you can manually write your own CSS if preferred. The HTML file can be used to verify the output of the font generation.
 
 _**NOTE**: Prior builds will be removed when a new build is run. Make sure to copy out any files needed before running a new build._
+
+#### In a Vagrant Virtual Machine ####
+
+You can also build the fonts in a Vagrant VM that has all the required libraries.  Before you can do this, you will need
+to:
+
+1. Install Vagrant and VirtualBox.
+2. Install the [Vagrant CI Plugin](https://github.com/gpii-ops/vagrant-gpii-ci) using a command like: `vagrant plugin install vagrant-gpii-ci`
+
+Once you have satisifed these requirements, you can build the fonts in a VM using commands like:
+
+```bash
+vagrant up
+vagrant ci test
+```
+
+When this process completes, you should see console output like the following:
+
+```bash
+==> linux: Font Infusion-Icons with 49 glyphs created.
+==> linux: Done.
+```
+
+The resulting font files and CSS file can be found in the `build` subdirectory of your repository.  If you have already
+run these commands and want to rebuild the font, you can skip the initial provisioning and just rebuild the fonts using
+a command like the following:
+
+```bash
+vagrant ci test --stage build
+```
+
+Once you have provisioned the VM by running `vagrant up` and then `vagrant ci test`, you can also use the VM to build a
+custom font (see below).  Before you can run those commands, you need to run `vagrant ssh` to login to the VM.  Once you
+have done this, navigate to the `/vagrant` subdirectory.  You should then be able to continue as outlined in the next
+section.
 
 #### Custom Icon Fonts ####
 
