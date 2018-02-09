@@ -1,0 +1,31 @@
+# QI Configuration file, see: https://github.com/amatas/vagrant-gpii-ci
+---
+
+env:
+  vms:
+    linux:
+      cpu: 2                   # number of cpus
+      memory: 2048             # amount of RAM memory (in Mb)
+      clone: true              # use the linked_clone Vagrant feature
+      autostart: true
+      box: inclusivedesign/fedora27
+
+stages:                # Stages to perform when 'ci test' command is invoked
+  - setup              # Install our system-level dependencies, etc.
+  - build              # build the icon fonts.
+
+setup_job:
+  stage: setup
+  script:
+    - |
+      sudo dnf install -y nodejs automake gcc-c++ nodejs-devel
+      sudo dnf install -y fontforge.x86_64 ttfautohint.x86_64
+      sudo mkdir -p /var/tmp/vagrant/node_modules /vagrant/node_modules
+      sudo chown vagrant:vagrant /var/tmp/vagrant/node_modules
+      sudo mount -o bind /var/tmp/vagrant/node_modules /vagrant/node_modules
+      sudo npm install -g grunt-cli node-gyp
+      npm install
+build_job:
+  stage: build          # name of the stage
+  script:              # One line per command to execute
+    - "grunt"
