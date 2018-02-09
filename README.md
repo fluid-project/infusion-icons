@@ -11,16 +11,16 @@ The documentation containing best practices for creating the SVG icons as well a
 
 #### On a Local Machine ####
 
-Infusion-Icons comes with a grunt task for compiling all of the SVGs into an icon font.
+Infusion-Icons comes with a `grunt` task for compiling all of the SVGs into an icon font.
 
-The following dependencies are required to be installed first.
+The following dependencies must be installed first:
 
 * Node.js
 * Grunt
 * ttfautohint
 * fontforge
 
-After all of the above dependencies are installed, run `npm install` to install the remaining node based dependencies.
+After installing the above dependencies, run `npm install` to install the remaining node based dependencies.
 
 ```bash
 npm install
@@ -34,14 +34,14 @@ grunt
 
 This will create the icon fonts in the `build` directory. Additionally CSS and HTML files will be generated alongside the fonts. The CSS file can be used for adding the icons to your web page; however, you can manually write your own CSS if preferred. The HTML file can be used to verify the output of the font generation.
 
-_**NOTE**: Prior builds will be removed when a new build is run. Make sure to copy out any files needed before running a new build._
+_**NOTE**: Prior builds will be removed when a new build is run. Make sure to save any needed files before running a new build._
 
 #### In a Vagrant Virtual Machine ####
 
 You can also build the fonts in a Vagrant VM that has all the required libraries.  Before you can do this, you will need
 to:
 
-1. Install Vagrant and VirtualBox.
+1. Install [Vagrant](https://www.vagrantup.com) and [VirtualBox](https://www.virtualbox.org).
 2. Install the [Vagrant CI Plugin](https://github.com/gpii-ops/vagrant-gpii-ci) using a command like: `vagrant plugin install vagrant-gpii-ci`
 
 Once you have satisifed these requirements, you can build the fonts in a VM using commands like:
@@ -58,7 +58,7 @@ When this process completes, you should see console output like the following:
 ==> linux: Done.
 ```
 
-The resulting font files and CSS file can be found in the `build` subdirectory of your repository.  If you have already
+The resulting font files and CSS file can be found in the `build` subdirectory of your repository on the host machine.  If you have already
 run these commands and want to rebuild the font, you can skip the initial provisioning and just rebuild the fonts using
 a command like the following:
 
@@ -69,8 +69,16 @@ vagrant ci test --stage build
 Once you have provisioned the VM by running `vagrant up` and then `vagrant ci test`, you can also use the VM to build a
 custom font (see below).  Before you can run those commands, you need to run `vagrant ssh` to login to the VM.  Once you
 have done this, navigate to the `/vagrant` subdirectory.  You should then be able to continue as outlined in the next
-section.  Please note, to use a custom configuration file (see below), you will either need to create it in the
-repository directory, or copy it to the VM using a program like `scp` or `sftp`.
+section.  
+
+```bash
+vagrant ssh
+
+cd /vagrant
+grunt build --config="path/to/config.json"
+```
+
+_**NOTE**: To build [Custom Icon Fonts](#custom-icon-fonts) you will either need to create a config file in the repository directory, or copy it to the VM using a program like `scp` or `sftp`._
 
 #### Custom Icon Fonts ####
 
@@ -82,7 +90,7 @@ To create a custom font you can run the `grunt build` command and provide a JSON
 grunt build --config="path/to/config.json"
 ```
 
-The JSON config file may contain any of the settings listed for [grunt-webfont](https://github.com/sapegin/grunt-webfont). The config file must contain a `src` path(s) specifying the icons to be compiled into the font. It is also recommended to include a `codepoints` object containing the mapping between the icons and their generated codepoint. This will make it easier to maintain consistent codepoints for each icon in the font. In particular this is useful if you need to add additional icons later and don't want to have to change any of the markup or CSS for the existing icons used in your project. It is recommended that you version this config file in your project for future use and reference.
+The JSON config file may contain any of the settings listed for [grunt-webfont](https://github.com/sapegin/grunt-webfont). The config file must contain a `src` path(s) specifying the icons to be compiled into the font. It is also recommended to include a `codepoints` object containing the mapping between the icons and their generated codepoint. This will make it easier to maintain consistent codepoints for each icon in the font. This is particularly useful if you need to add additional icons later and don't want to change any of the markup or CSS for the existing icons used in your project. It is recommended that you version this config file in your project for future use and reference.
 
 The following shows an example of a config file and can also be found in the repo as `configTemplate.json`.
 
@@ -100,7 +108,7 @@ The following shows an example of a config file and can also be found in the rep
 }
 ```
 
-_**NOTE**: codepoints can take the form of an integer or a string representation of a hexadecimal number. It is typically easier to work with the hexidecimal string because this is the value typically used in the content property of the CSS declaration for the icon._
+_**NOTE**: Codepoints can take the form of an integer or a string representation of a hexadecimal number. It is typically easier to work with the hexidecimal string because it is similar to what is used for the content property in the CSS declaration for the icon._
 
 
 ## License ##
