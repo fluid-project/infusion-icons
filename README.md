@@ -15,10 +15,12 @@ Infusion-Icons comes with a `grunt` task for compiling all of the SVGs into an i
 
 The following dependencies must be installed first:
 
-* Node.js
-* Grunt
+* [Node.js](https://nodejs.org/en/)
+* [Grunt](https://gruntjs.com)
 * ttfautohint
 * fontforge
+
+_**NOTE**: See the [Installation documentation](https://github.com/sapegin/grunt-webfont#installation) from `grunt-webfont` for how to install `ttfautohint` and `fontforge` on your platform._
 
 After installing the above dependencies, run `npm install` to install the remaining node based dependencies.
 
@@ -80,7 +82,7 @@ grunt build --config="path/to/config.json"
 
 _**NOTE**: To build [Custom Icon Fonts](#custom-icon-fonts) you will either need to create a config file in the repository directory, or copy it to the VM using a program like `scp` or `sftp`._
 
-#### Custom Icon Fonts ####
+### Custom Icon Fonts ###
 
 For most projects you will not need all of the icons. For these cases it is recommended to create a custom icon font that includes only the icons needed. This will reduce the size of the font file generated.
 
