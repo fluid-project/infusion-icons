@@ -94,7 +94,7 @@ grunt build --config="path/to/config.json"
 
 The JSON config file may contain any of the settings listed for [grunt-webfont](https://github.com/sapegin/grunt-webfont). The config file must contain a `src` path(s) specifying the icons to be compiled into the font. It is also recommended to include a `codepoints` object containing the mapping between the icons and their generated codepoint. This will make it easier to maintain consistent codepoints for each icon in the font. This is particularly useful if you need to add additional icons later and don't want to change any of the markup or CSS for the existing icons used in your project. It is recommended that you version this config file in your project for future use and reference.
 
-The following shows an example of a config file and can also be found in the repo as `configTemplate.json`.
+The following shows an example of a config file and can also be found in the repo as `templates/configTemplate.json`.
 
 ```json
 {

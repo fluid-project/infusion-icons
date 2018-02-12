@@ -33,7 +33,8 @@ module.exports = function (grunt) {
                 syntax: "bootstrap",
                 templateOptions: {
                     classPrefix: "fl-icon-"
-                }
+                },
+                htmlDemoTemplate: "templates/demo.html"
             },
             all: {
                 src: "svg/*.svg",
