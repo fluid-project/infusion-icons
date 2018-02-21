@@ -1,19 +1,27 @@
 {
-    "name": "infusion-icons",
-    "description": "SVG icons for use in Infusion",
-    "version": "1.0.0",
-    "author": "Fluid Project",
-    "bugs": "http://issues.fluidproject.org/browse/FLUID",
-    "homepage": "http://www.fluidproject.org/",
-    "license": "CC-BY-4.0",
-    "keywords": [
-        "infusion",
-        "icon",
-        "svg",
-        "font"
-    ],
-    "repository": "git://github.com/fluid-project/infusion-icons.git",
-    "engines": {
-        "node": ">=6.0.0"
-    }
+  "name": "infusion-icons",
+  "description": "SVG icons for use in Infusion",
+  "version": "1.0.0",
+  "author": "Fluid Project",
+  "bugs": "http://issues.fluidproject.org/browse/FLUID",
+  "homepage": "http://www.fluidproject.org/",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "infusion",
+    "icon",
+    "svg",
+    "font"
+  ],
+  "repository": "git://github.com/fluid-project/infusion-icons.git",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "eslint-config-fluid": "1.2.0",
+    "fluid-grunt-eslint": "18.1.2",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "1.1.0",
+    "grunt-jsonlint": "1.1.0",
+    "grunt-webfont": "1.6.0"
+  }
 }

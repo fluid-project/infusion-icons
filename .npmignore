@@ -1,0 +1,5 @@
+.gitignore
+.npmignore
+.vagrant
+report.tap
+build/
