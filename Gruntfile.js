@@ -17,13 +17,42 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
         clean: {
-            build: "build"
+            build: "build",
+            dependencies: ["svg/fontawesome"]
+        },
+        copy: {
+            dependencies: {
+                files: [{
+                    src: "node_modules/@fortawesome/fontawesome-free/svgs/brands/*.svg",
+                    dest: "svg/fontawesome/brands/",
+                    expand: true,
+                    flatten: true
+                }, {
+                    src: "node_modules/@fortawesome/fontawesome-free/svgs/regular/*.svg",
+                    dest: "svg/fontawesome/regular/",
+                    expand: true,
+                    flatten: true
+                }, {
+                    src: "node_modules/@fortawesome/fontawesome-free/svgs/solid/*.svg",
+                    dest: "svg/fontawesome/solid/",
+                    expand: true,
+                    flatten: true
+                }]
+            }
         },
         eslint: {
             all: ["**/*.js"]
         },
         jsonlint: {
             all: ["*.json", ".*.json"]
+        },
+        lintAll: {
+            sources: {
+                md: [ "*.md"],
+                js: ["*.js"],
+                json: ["*.json", "templates/*.json"],
+                other: ["./.*"]
+            }
         },
         webfont: {
             options: {
@@ -49,8 +78,8 @@ module.exports = function (grunt) {
 
     // Load the plugins:
     grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("fluid-grunt-eslint");
-    grunt.loadNpmTasks("grunt-jsonlint");
+    grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("gpii-grunt-lint-all");
     grunt.loadNpmTasks("grunt-webfont");
 
     // Custom tasks:
@@ -82,7 +111,7 @@ module.exports = function (grunt) {
         }
 
         var tasks = [
-            "clean",
+            "clean:build",
             "lint",
             "webfont:" + target
         ];
@@ -90,5 +119,6 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask("default", ["build:all"]);
-    grunt.registerTask("lint", "Apply eslint and jsonlint", ["eslint", "jsonlint"]);
+    grunt.registerTask("lint", "Perform all standard lint checks.", ["lint-all"]);
+    grunt.registerTask("loadDependencies", "Load lib files from node_modules", ["clean:dependencies", "copy:dependencies"]);
 };
