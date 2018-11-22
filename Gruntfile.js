@@ -66,7 +66,7 @@ module.exports = function (grunt) {
                 htmlDemoTemplate: "templates/demo.html"
             },
             all: {
-                src: "svg/*.svg",
+                src: "svg/infusion/*.svg",
                 dest: "build/" // Destination path for the font files.
             },
             // to be filled based on a config file provided at run time

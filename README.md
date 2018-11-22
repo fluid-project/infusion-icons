@@ -12,8 +12,10 @@ https://wiki.fluidproject.org/display/fluid/Standard+workflow+in+maintaining+and
 
 ## Available Icons
 
-The original icons can be found at the root of the the svg directory. Additional fonts from third party sources may be
-pulled in as subdirectories of svg.
+### Infusion
+
+The Infusion icons can be found in the "svg/infusion" directory. These icons are used for creating the default icon
+font, or can be used for creating custom icon fonts.
 
 ### Third Party Icons
 
