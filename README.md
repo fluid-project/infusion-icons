@@ -12,17 +12,8 @@ https://wiki.fluidproject.org/display/fluid/Standard+workflow+in+maintaining+and
 
 ## Available Icons
 
-### Infusion
-
-The Infusion icons can be found in the "svg/infusion" directory. These icons are used for creating the default icon
-font, or can be used for creating custom icon fonts.
-
-### Third Party Icons
-
-#### Font Awesome
-
-The free [Font Awesome](https://fontawesome.com/icons?d=gallery&s=brands,regular,solid&m=free) icons are available for
-use when compiling custom icon fonts.
+* Infusion
+* [Font Awesome](https://fontawesome.com/icons?d=gallery&s=brands,regular,solid&m=free)
 
 ### Compiling Icon Fonts
 
@@ -46,10 +37,22 @@ After installing the above dependencies, run `npm install` to install the remain
 npm install
 ```
 
-To compile the font icon simply run `grunt` from the project root.
+To compile all icons into a single font simply run `grunt` from the project root.
 
 ```bash
 grunt
+```
+
+To compile only the infusion icons run the following:
+
+```bash
+grunt build:infusion
+```
+
+To compile only the font awesome icons run the following:
+
+```bash
+grunt build:fontawesome
 ```
 
 This will create the icon fonts in the `build` directory. Additionally CSS and HTML files will be generated alongside

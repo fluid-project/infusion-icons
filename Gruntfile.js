@@ -56,7 +56,6 @@ module.exports = function (grunt) {
         },
         webfont: {
             options: {
-                font: "Infusion-Icons", // Name of the generated font.
                 // The following configuration is for the generated CSS file only
                 // and not necessary if you setup the CSS manually
                 syntax: "bootstrap",
@@ -66,8 +65,28 @@ module.exports = function (grunt) {
                 htmlDemoTemplate: "templates/demo.html"
             },
             all: {
-                src: "svg/infusion/*.svg",
+                options: {
+                    font: "infusion-icons-all" // Name of the generated font.
+                },
+                src: [
+                    "svg/infusion/*.svg",
+                    "svg/fontawesome/*/*.svg"
+                ],
                 dest: "build/" // Destination path for the font files.
+            },
+            infusion: {
+                options: {
+                    font: "infusion-icons-only" // Name of the generated font.
+                },
+                src: "svg/infusion/*.svg",
+                dest: "build/"
+            },
+            fontawesome: {
+                options: {
+                    font: "infusion-icons-fontawesome" // Name of the generated font.
+                },
+                src: "svg/fontawesome/*/*.svg",
+                dest: "build/"
             },
             // to be filled based on a config file provided at run time
             custom: {
@@ -87,7 +106,7 @@ module.exports = function (grunt) {
     // task for generating the icon font, either all or custom.
     grunt.registerTask("build", "Compiles the icon font", function (target) {
         var configPath = grunt.option("config");
-        target = target === "all" ? target : "custom";
+        target = target || "custom";
 
         if (configPath) {
             // set the custom task settings from the config file
