@@ -43,13 +43,13 @@ To compile all icons into a single font simply run `grunt` from the project root
 grunt
 ```
 
-To compile only the infusion icons run the following:
+To compile only the Infusion icons run the following:
 
 ```bash
 grunt build:infusion
 ```
 
-To compile only the font awesome icons run the following:
+To compile only the Font Awesome icons run the following:
 
 ```bash
 grunt build:fontawesome
