@@ -17,7 +17,28 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
         clean: {
-            build: "build"
+            build: "build",
+            dependencies: ["svg/fontawesome"]
+        },
+        copy: {
+            dependencies: {
+                files: [{
+                    src: "node_modules/@fortawesome/fontawesome-free/svgs/brands/*.svg",
+                    dest: "svg/fontawesome/brands/",
+                    expand: true,
+                    flatten: true
+                }, {
+                    src: "node_modules/@fortawesome/fontawesome-free/svgs/regular/*.svg",
+                    dest: "svg/fontawesome/regular/",
+                    expand: true,
+                    flatten: true
+                }, {
+                    src: "node_modules/@fortawesome/fontawesome-free/svgs/solid/*.svg",
+                    dest: "svg/fontawesome/solid/",
+                    expand: true,
+                    flatten: true
+                }]
+            }
         },
         eslint: {
             all: ["**/*.js"]
@@ -25,9 +46,16 @@ module.exports = function (grunt) {
         jsonlint: {
             all: ["*.json", ".*.json"]
         },
+        lintAll: {
+            sources: {
+                md: [ "*.md"],
+                js: ["*.js"],
+                json: ["*.json", "templates/*.json"],
+                other: ["./.*"]
+            }
+        },
         webfont: {
             options: {
-                font: "Infusion-Icons", // Name of the generated font.
                 // The following configuration is for the generated CSS file only
                 // and not necessary if you setup the CSS manually
                 syntax: "bootstrap",
@@ -37,8 +65,28 @@ module.exports = function (grunt) {
                 htmlDemoTemplate: "templates/demo.html"
             },
             all: {
-                src: "svg/*.svg",
+                options: {
+                    font: "infusion-icons-all" // Name of the generated font.
+                },
+                src: [
+                    "svg/infusion/*.svg",
+                    "svg/fontawesome/*/*.svg"
+                ],
                 dest: "build/" // Destination path for the font files.
+            },
+            infusion: {
+                options: {
+                    font: "infusion-icons-only" // Name of the generated font.
+                },
+                src: "svg/infusion/*.svg",
+                dest: "build/"
+            },
+            fontawesome: {
+                options: {
+                    font: "infusion-icons-fontawesome" // Name of the generated font.
+                },
+                src: "svg/fontawesome/*/*.svg",
+                dest: "build/"
             },
             // to be filled based on a config file provided at run time
             custom: {
@@ -49,8 +97,8 @@ module.exports = function (grunt) {
 
     // Load the plugins:
     grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("fluid-grunt-eslint");
-    grunt.loadNpmTasks("grunt-jsonlint");
+    grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("gpii-grunt-lint-all");
     grunt.loadNpmTasks("grunt-webfont");
 
     // Custom tasks:
@@ -58,7 +106,7 @@ module.exports = function (grunt) {
     // task for generating the icon font, either all or custom.
     grunt.registerTask("build", "Compiles the icon font", function (target) {
         var configPath = grunt.option("config");
-        target = target === "all" ? target : "custom";
+        target = target || "custom";
 
         if (configPath) {
             // set the custom task settings from the config file
@@ -82,7 +130,7 @@ module.exports = function (grunt) {
         }
 
         var tasks = [
-            "clean",
+            "clean:build",
             "lint",
             "webfont:" + target
         ];
@@ -90,5 +138,6 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask("default", ["build:all"]);
-    grunt.registerTask("lint", "Apply eslint and jsonlint", ["eslint", "jsonlint"]);
+    grunt.registerTask("lint", "Perform all standard lint checks.", ["lint-all"]);
+    grunt.registerTask("loadDependencies", "Load lib files from node_modules", ["clean:dependencies", "copy:dependencies"]);
 };
