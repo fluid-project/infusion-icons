@@ -5,7 +5,7 @@ Licensed under the New BSD license.
 You may not use this file except in compliance with this Licenses.
 
 You may obtain a copy of the BSD License at
-https://github.com/fluid-project/infusion-icons/raw/master/code-LICENSE.txt
+https://github.com/fluid-project/infusion-icons/raw/main/code-LICENSE.txt
 */
 
 /* eslint-env node */
